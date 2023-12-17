@@ -462,9 +462,7 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 
 set -g @plugin '27medkamal/tmux-session-wizard'
 set -g @session-wizard 'F'
-set -g @plugin 'tmux-plugins/tmux-sessionist'
-set -g @sessionist-goto " "
-set -g @sessionist-join-pane " "
+set -g @plugin 'superappkid/tmux-sessionist'
 
 set -g @plugin 'christoomey/vim-tmux-navigator'
 
