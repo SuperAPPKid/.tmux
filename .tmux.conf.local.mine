@@ -421,6 +421,11 @@ bind \\ split-window -v
 # split current window vertically
 bind | split-window -h
 
+# urlview
+unbind U
+# facebook pathpicker
+unbind F
+
 # -- tpm -----------------------------------------------------------------------
 
 # while I don't use tpm myself, many people requested official support so here
