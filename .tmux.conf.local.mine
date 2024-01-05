@@ -438,18 +438,18 @@ unbind F
 # by default, launching tmux will update tpm and all plugins
 #   - true (default)
 #   - false
-tmux_conf_update_plugins_on_launch=true
+tmux_conf_update_plugins_on_launch=false
 
 # by default, reloading the configuration will update tpm and all plugins
 #   - true (default)
 #   - false
-tmux_conf_update_plugins_on_reload=true
+tmux_conf_update_plugins_on_reload=false
 
 # by default, reloading the configuration will uninstall tpm and plugins when no
 # plugins are enabled
 #   - true (default)
 #   - false
-tmux_conf_uninstall_plugins_on_reload=true
+tmux_conf_uninstall_plugins_on_reload=false
 
 # /!\ the tpm bindings differ slightly from upstream:
 #   - installing plugins: <prefix> + I
@@ -465,23 +465,25 @@ tmux_conf_uninstall_plugins_on_reload=true
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 
-set -g @plugin '27medkamal/tmux-session-wizard'
-set -g @session-wizard 'F'
-set -g @plugin 'superappkid/tmux-sessionist'
-
 set -g @plugin 'christoomey/vim-tmux-navigator'
 
 set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 set -g @plugin 'jaclu/tmux-power-zoom'
 
 set -g @plugin 'laktak/extrakto'
-set -g @plugin 'fcsonline/tmux-thumbs'
-set -g @thumbs-key t
-bind T clock-mode
-set -g @thumbs-command 'echo -n {} | pbcopy'
-set -g @thumbs-upcase-command 'tmux set-buffer -- {} && tmux paste-buffer'
 
-set -g @tpm-clean 'U'
+set -g @plugin 'Morantron/tmux-fingers'
+set -g @fingers-key t
+set -g @fingers-jump-key nil
+set -g @fingers-alt-action ':open:'
+bind T clock-mode
+
+TMUX_FZF_LAUNCH_KEY="f"
+set -g @plugin 'sainnhe/tmux-fzf'
+set -g @plugin 'wfxr/tmux-fzf-url'
+set -g @fzf-url-bind 'u'
+
+set -g @tpm-clean 'E'
 
 # -- custom variables ----------------------------------------------------------
 
@@ -497,6 +499,8 @@ set -g @tpm-clean 'U'
 # EOF
 #
 # # /!\ do not "uncomment" the functions: the leading "# " characters are needed
+#
+# tmux set -g '@fingers-ctrl-action' "xargs tmux new-window $EDITOR"
 #
 # weather() {                                         # see https://github.com/chubin/wttr.in#one-line-output
 #   curl -f -s -m 2 'wttr.in?format=3' || printf '\n' # /!\ make sure curl is installed
