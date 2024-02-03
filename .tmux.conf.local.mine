@@ -465,6 +465,7 @@ tmux_conf_uninstall_plugins_on_reload=false
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 
+set -g @plugin 'superappkid/tmux-sessionist'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 
 set -g @plugin 'nhdaly/tmux-better-mouse-mode'
