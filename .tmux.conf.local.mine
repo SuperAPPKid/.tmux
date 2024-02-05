@@ -417,9 +417,20 @@ bind C-a send-prefix
 # set -g status-position top
 
 # split current window horizontally
-bind \\ split-window -v
+unbind %
+bind \\ split-window -vf
+
 # split current window vertically
-bind | split-window -h
+unbind \"
+bind | split-window -hf
+
+# swap windows
+bind-key -r "<" swap-window -d -t -1
+bind-key -r ">" swap-window -d -t +1
+
+# copy-mode
+bind -T copy-mode-vi C-w send -X select-word
+bind -T copy-mode-vi c send -X clear-selection
 
 # urlview
 unbind U
