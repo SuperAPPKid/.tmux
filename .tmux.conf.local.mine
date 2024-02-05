@@ -499,6 +499,12 @@ set -g @plugin 'sainnhe/tmux-fzf'
 set -g @plugin 'wfxr/tmux-fzf-url'
 set -g @fzf-url-bind 'u'
 
+set -g @plugin 'sainnhe/tmux-translator'
+set -g @tmux-translator "d"
+set -g @tmux-translator-from "en"
+set -g @tmux-translator-to "zh-tw"
+set -g @tmux-translator-engine "google"
+
 set -g @tpm-clean 'E'
 set -g @tpm-update 'U'
 
