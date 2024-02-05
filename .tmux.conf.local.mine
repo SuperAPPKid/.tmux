@@ -454,7 +454,7 @@ tmux_conf_update_plugins_on_launch=false
 # by default, reloading the configuration will update tpm and all plugins
 #   - true (default)
 #   - false
-tmux_conf_update_plugins_on_reload=false
+tmux_conf_update_plugins_on_reload=true
 
 # by default, reloading the configuration will uninstall tpm and plugins when no
 # plugins are enabled
@@ -476,8 +476,7 @@ tmux_conf_uninstall_plugins_on_reload=true
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'superappkid/tmux-continuum'
 set -g @resurrect-strategy-nvim 'session'
-set -g @resurrect-processes 'ssh cmatrix gotop'
-set -g @resurrect-capture-pane-contents 'on'
+set -g @resurrect-processes 'ssh cmatrix gotop grpcui go "docker run"'
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '5'
 
