@@ -461,9 +461,14 @@ bind | split-window -hf
 bind-key -r "<" swap-window -d -t -1
 bind-key -r ">" swap-window -d -t +1
 
+bind l last-window        # move to last active window
+
 # copy-mode
 bind -T copy-mode-vi C-w send -X select-word
 bind -T copy-mode-vi c send -X clear-selection
+
+# clear pane
+bind-key C-k send-keys -R ^M \; clear-history
 
 # urlview
 unbind U
