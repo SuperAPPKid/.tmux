@@ -7,7 +7,9 @@
 #         Copyright 2012— Gregory Pakosz (@gpakosz).
 
 set -g status-interval 5     # redraw status line every 10 seconds
-
+set -g default-terminal "$TERM"
+set -as terminal-features ",$TERM:usstyle"
+set -ag terminal-overrides ",$TERM:Tc"
 # -- bindings ------------------------------------------------------------------
 
 # preserve tmux stock bindings,
