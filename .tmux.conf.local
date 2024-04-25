@@ -461,7 +461,7 @@ bind | split-window -hf
 bind-key -r "<" swap-window -d -t -1
 bind-key -r ">" swap-window -d -t +1
 
-bind l last-window        # move to last active window
+bind b last-window        # move to last active window
 
 # copy-mode
 bind -T copy-mode-vi C-w send -X select-word
