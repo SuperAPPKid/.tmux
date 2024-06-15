@@ -518,6 +518,8 @@ set -g @plugin 'superappkid/tmux-continuum'
 set -g @resurrect-strategy-nvim 'session'
 set -g @resurrect-processes 'ssh cmatrix gotop grpcui go "docker run"'
 set -g @continuum-restore 'on'
+set -g @continuum-boot 'on'
+set -g @continuum-boot-options 'alacritty'
 set -g @continuum-save-interval '5'
 
 set -g @plugin 'superappkid/tmux-sessionist'
