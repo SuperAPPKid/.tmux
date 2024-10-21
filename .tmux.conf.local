@@ -523,7 +523,6 @@ set -g @continuum-boot-options 'alacritty'
 set -g @continuum-save-interval '5'
 
 set -g @plugin 'superappkid/tmux-sessionist'
-set -g @plugin 'christoomey/vim-tmux-navigator'
 
 set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 set -g @plugin 'jaclu/tmux-power-zoom'
