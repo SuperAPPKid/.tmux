@@ -8,6 +8,7 @@
 
 set -g status-interval 5     # redraw status line every 10 seconds
 set -g default-terminal "$TERM"
+set -g detach-on-destroy off  # don't exit from tmux when closing a session
 set -as terminal-features ",$TERM:usstyle"
 set -ag terminal-overrides ",$TERM:Tc"
 # -- bindings ------------------------------------------------------------------
@@ -497,6 +498,28 @@ bind-key C-k send-keys -R ^M \; clear-history
 unbind U
 # facebook pathpicker
 unbind F
+
+# create session
+unbind C-c
+# find session
+unbind C-f
+# sesh integration
+unbind-key s
+bind-key s run-shell 'sesh connect "$(
+  sesh list -i -H -d | "$TMUX_PLUGIN_MANAGER_PATH/tmux-fzf/scripts/.fzf-tmux" -p 80%,80% \
+    --no-sort --ansi --border-label " sesh " --prompt "⚡  " \
+    --header "[^a all] [^t tmux] [^p preset] [^o zoxide] [^x KILL]" \
+    --bind "tab:down,btab:up" \
+    --bind "ctrl-a:change-prompt(⚡  )+reload(sesh list -i -H -d)" \
+    --bind "ctrl-t:change-prompt(🪟  )+reload(sesh list -t -i -H -d)" \
+    --bind "ctrl-p:change-prompt(⚙️  )+reload(sesh list -c -i -H -d)" \
+    --bind "ctrl-o:change-prompt(📁  )+reload(sesh list -z -i -H -d)" \
+    --bind "ctrl-x:execute(tmux kill-session -t {2..})+change-prompt(⚡  )+reload(sesh list -i -H -d)" \
+    --preview-window "right:66%" \
+    --preview "sesh preview {}"
+)"'
+bind-key x kill-pane # skip "kill-pane 1? (y/n)" prompt
+bind-key X run-shell "tmux kill-session -t '#{session_name}'"
 
 # -- tpm -----------------------------------------------------------------------
 
