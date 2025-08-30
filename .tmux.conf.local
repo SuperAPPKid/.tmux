@@ -435,7 +435,7 @@ set -g mouse on
 #set -g status-keys vi
 #set -g mode-keys vi
 
-## Intergrate wit Neovim
+## Intergrate with Neovim
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
@@ -461,34 +461,34 @@ set -gu prefix2
 unbind C-a
 unbind C-b
 set -g prefix C-a
-bind C-a send-prefix
+bind-key C-a send-prefix
 
 # if you don't want Oh my tmux! to alter a binding or a setting, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
 
 # display a message after toggling mouse support
-bind m run "cut -c3- '#{TMUX_CONF}' | sh -s _toggle_mouse" \; display 'mouse #{?#{mouse},on,off}'
+bind-key m run "cut -c3- '#{TMUX_CONF}' | sh -s _toggle_mouse" \; display 'mouse #{?#{mouse},on,off}'
 
 # move status line to top
 # set -g status-position top
 
 # split current window horizontally
 unbind %
-bind \\ split-window -vf
+bind-key \\ split-window -vf
 
 # split current window vertically
 unbind \"
-bind | split-window -hf
+bind-key | split-window -hf
 
 # swap windows
 bind-key -r "<" swap-window -d -t -1
 bind-key -r ">" swap-window -d -t +1
 
-bind b last-window        # move to last active window
+bind-key b last-window # move to last active window
 
 # copy-mode
-bind -T copy-mode-vi C-w send -X select-word
-bind -T copy-mode-vi c send -X clear-selection
+bind-key -T copy-mode-vi C-w send -X select-word
+bind-key -T copy-mode-vi c send -X clear-selection
 
 # clear pane
 bind-key C-k send-keys -R ^M \; clear-history
