@@ -543,30 +543,28 @@ set -g @continuum-boot 'on'
 set -g @continuum-boot-options 'alacritty'
 set -g @continuum-save-interval '5'
 
-set -g @plugin 'superappkid/tmux-sessionist'
-
 set -g @plugin 'nhdaly/tmux-better-mouse-mode'
-set -g @plugin 'jaclu/tmux-power-zoom'
 
 set -g @plugin 'laktak/extrakto'
 
-set -g @plugin 'Morantron/tmux-fingers'
-set -g @fingers-key t
-set -g @fingers-jump-key nil
-set -g @fingers-alt-action ':open:'
-bind T clock-mode
-
 TMUX_FZF_LAUNCH_KEY="f"
 set -g @plugin 'sainnhe/tmux-fzf'
+
 set -g @plugin 'wfxr/tmux-fzf-url'
 set -g @fzf-url-bind 'u'
+set -g @fzf-url-fzf-options '--exact -w 100% -h 50% --multi -0 --no-preview'
 
-set -g @plugin 'sainnhe/tmux-translator'
-set -g @tmux-translator "d"
-set -g @tmux-translator-from "en"
-set -g @tmux-translator-to "zh-tw"
-set -g @tmux-translator-engine "google"
+set -g @plugin 'jaclu/tmux-menus'
+set -g @menus_trigger 'M'
 
+set -g @plugin 'omerxx/tmux-floax'
+set -g @floax-title 'Popup'
+set -g @floax-bind 'p'
+set -g @floax-bind-menu 'P'
+set -g @floax-border-color 'blue'
+set -g @floax-text-color 'blue'
+
+set -g @tpm-install 'I'
 set -g @tpm-clean 'E'
 set -g @tpm-update 'U'
 
