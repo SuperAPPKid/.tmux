@@ -501,10 +501,13 @@ unbind F
 
 # create session
 unbind C-c
-# find session
-unbind C-f
+bind-key C command-prompt -p "New session name:" "new-session -s '%%'"
+# kill 
+bind-key x kill-pane
+bind-key X confirm-before -p "kill-session #S? (y/n)" kill-session
 # sesh integration
-unbind-key s
+unbind C-f
+bind L run-shell "sesh last"
 bind-key s run-shell 'sesh connect "$(
   sesh list -i -H -d | "$TMUX_PLUGIN_MANAGER_PATH/tmux-fzf/scripts/.fzf-tmux" -p 80%,80% \
     --no-sort --ansi --border-label " sesh " --prompt "⚡  " \
@@ -518,8 +521,15 @@ bind-key s run-shell 'sesh connect "$(
     --preview-window "right:66%" \
     --preview "sesh preview {}"
 )"'
-bind-key x kill-pane # skip "kill-pane 1? (y/n)" prompt
-bind-key X run-shell "tmux kill-session -t '#{session_name}'"
+bind-key S run-shell '
+  PANE_ID="#{pane_id}";
+  sesh connect "#{pane_current_path}"
+  tmux break-pane -s "$PANE_ID"
+'
+
+# cheatsheet
+bind-key ? customize-mode -Z
+bind-key \/ list-keys
 
 # -- tpm -----------------------------------------------------------------------
 
