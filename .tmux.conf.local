@@ -507,9 +507,9 @@ bind-key x kill-pane
 bind-key X confirm-before -p "kill-session #S? (y/n)" kill-session
 # sesh integration
 unbind C-f
-bind L run-shell "sesh last"
+bind L run-shell "sesh last > /dev/null 2>&1"
 bind-key s run-shell 'sesh connect "$(
-  sesh list -i -H -d | "$TMUX_PLUGIN_MANAGER_PATH/tmux-fzf/scripts/.fzf-tmux" -p 80%,80% \
+  sesh list -i -H -d | fzf --tmux \
     --no-sort --ansi --border-label " sesh " --prompt "⚡  " \
     --header "[^a all] [^t tmux] [^p preset] [^o zoxide] [^x KILL]" \
     --bind "tab:down,btab:up" \
@@ -524,6 +524,7 @@ bind-key s run-shell 'sesh connect "$(
 bind-key S run-shell '
   PANE_ID="#{pane_id}";
   sesh connect "#{pane_current_path}"
+  sleep 0.5
   tmux break-pane -s "$PANE_ID"
 '
 
