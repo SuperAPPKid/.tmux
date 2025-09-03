@@ -577,7 +577,7 @@ set -g @plugin 'sainnhe/tmux-fzf'
 
 set -g @plugin 'wfxr/tmux-fzf-url'
 set -g @fzf-url-bind 'u'
-set -g @fzf-url-fzf-options '--exact -w 100% -h 50% --multi -0 --no-preview'
+set -g @fzf-url-fzf-options '--tmux bottom,100%,50% --multi --exit-0 --no-preview --exact'
 
 set -g @plugin 'jaclu/tmux-menus'
 set -g @menus_trigger 'M'
