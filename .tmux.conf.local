@@ -582,13 +582,6 @@ set -g @fzf-url-fzf-options '--exact -w 100% -h 50% --multi -0 --no-preview'
 set -g @plugin 'jaclu/tmux-menus'
 set -g @menus_trigger 'M'
 
-set -g @plugin 'omerxx/tmux-floax'
-set -g @floax-title 'Popup'
-set -g @floax-bind 'p'
-set -g @floax-bind-menu 'P'
-set -g @floax-border-color 'blue'
-set -g @floax-text-color 'blue'
-
 set -g @tpm-install 'I'
 set -g @tpm-clean 'E'
 set -g @tpm-update 'U'
