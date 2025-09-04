@@ -486,7 +486,7 @@ bind-key -r "<" swap-window -d -t -1
 bind-key -r ">" swap-window -d -t +1
 
 bind-key b last-window # move to last active window
-
+bind-key p display-popup -E $SHELL
 # copy-mode
 bind-key -T copy-mode-vi C-w send -X select-word
 bind-key -T copy-mode-vi c send -X clear-selection
@@ -522,10 +522,14 @@ bind-key s run-shell 'sesh connect "$(
     --preview "sesh preview {}"
 )"'
 bind-key S run-shell '
-  PANE_ID="#{pane_id}";
+  PANE_ID="#{pane_id}"
+  OLD_SESSION_ID=$(tmux display-message -p "#{session_id}")
   sesh connect "#{pane_current_path}"
   sleep 0.5
-  tmux break-pane -s "$PANE_ID"
+  NEW_SESSION_ID=$(tmux display-message -p "#{session_id}")
+  if [ "$OLD_SESSION_ID" != "$NEW_SESSION_ID" ]; then
+    tmux break-pane -s "$PANE_ID"
+  fi
 '
 
 # cheatsheet
