@@ -521,16 +521,7 @@ bind-key s run-shell 'sesh connect "$(
     --preview-window "right:66%" \
     --preview "sesh preview {}"
 )"'
-bind-key S run-shell '
-  PANE_ID="#{pane_id}"
-  OLD_SESSION_ID=$(tmux display-message -p "#{session_id}")
-  sesh connect "#{pane_current_path}"
-  sleep 0.5
-  NEW_SESSION_ID=$(tmux display-message -p "#{session_id}")
-  if [ "$OLD_SESSION_ID" != "$NEW_SESSION_ID" ]; then
-    tmux break-pane -s "$PANE_ID"
-  fi
-'
+bind-key S run-shell "dirname #{config_files} | head -1 | xargs -I {} echo {}/scripts/sesh_break_pane.sh | sh"
 
 # cheatsheet
 bind-key ? customize-mode -Z
