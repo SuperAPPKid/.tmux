@@ -507,7 +507,7 @@ bind-key x kill-pane
 bind-key X confirm-before -p "kill-session #S? (y/n)" kill-session
 # sesh integration
 unbind C-f
-bind L run-shell "sesh last > /dev/null 2>&1"
+bind L run-shell "sesh last || true"
 bind-key s run-shell 'sesh connect "$(
   sesh list -i -H -d | fzf --tmux \
     --no-sort --ansi --border-label " sesh " --prompt "⚡  " \
