@@ -498,6 +498,8 @@ bind-key C-k send-keys -R ^M \; clear-history
 unbind U
 # facebook pathpicker
 unbind F
+# disable custom maximize
+unbind + 
 
 # create session
 unbind C-c
@@ -507,7 +509,7 @@ bind-key x kill-pane
 bind-key X confirm-before -p "kill-session #S? (y/n)" kill-session
 # sesh integration
 unbind C-f
-bind L run-shell "sesh last || true"
+bind-key L run-shell "sesh last || true"
 bind-key s run-shell 'sesh connect "$(
   sesh list -i -H -d | fzf --tmux \
     --no-sort --ansi --border-label " sesh " --prompt "⚡  " \
