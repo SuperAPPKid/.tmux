@@ -10,6 +10,7 @@ set -g status-interval 5     # redraw status line every 10 seconds
 set -g default-terminal "$TERM"
 set -g detach-on-destroy off  # don't exit from tmux when closing a session
 set -as terminal-features ",$TERM:usstyle"
+set -as terminal-features 'xterm-256color:extkeys'
 set -ag terminal-overrides ",$TERM:Tc"
 # -- bindings ------------------------------------------------------------------
 
@@ -516,6 +517,9 @@ bind-key S run-shell 'echo "#{config_files}" | tr "," "\n" | tail -1 | xargs dir
 # cheatsheet
 bind-key ? customize-mode -Z
 bind-key \/ list-keys
+
+# shift+enter
+bind-key -n S-Enter send-keys Escape "[13;2u"
 
 # -- tpm -----------------------------------------------------------------------
 
